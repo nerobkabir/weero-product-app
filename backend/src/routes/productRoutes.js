@@ -30,11 +30,11 @@ const productValidation = [
     .isURL().withMessage('Image URL must be a valid URL'),
 ];
 
-// ─── Public Routes ────────────────────────────────────────────────────────────
+// Public Routes
 router.get('/', getAllProducts);
 router.get('/:id', getProductById);
 
-// ─── Protected Routes (login required) ───────────────────────────────────────
+// Protected Routes 
 router.post('/', protect, productValidation, createProduct);
 router.put('/:id', protect, productValidation, updateProduct);
 router.delete('/:id', protect, deleteProduct);
