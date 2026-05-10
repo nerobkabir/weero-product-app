@@ -1,8 +1,7 @@
 import { validationResult } from 'express-validator';
 import Product from '../models/Product.js';
 
-// ─── GET /api/products ────────────────────────────────────────────────────────
-// Public | Get all products with search, filter, and pagination
+// Get all products with search, filter, and pagination
 export const getAllProducts = async (req, res) => {
   try {
     const {
@@ -61,8 +60,7 @@ export const getAllProducts = async (req, res) => {
   }
 };
 
-// ─── GET /api/products/:id ────────────────────────────────────────────────────
-// Public | Get single product by ID
+// Get single product by ID
 export const getProductById = async (req, res) => {
   try {
     const product = await Product.findById(req.params.id).populate(
@@ -96,8 +94,7 @@ export const getProductById = async (req, res) => {
   }
 };
 
-// ─── POST /api/products ───────────────────────────────────────────────────────
-// Private | Create a new product
+// Create a new product
 export const createProduct = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -111,7 +108,6 @@ export const createProduct = async (req, res) => {
   try {
     const { name, price, description, imageUrl } = req.body;
 
-    // ── imageUrl validation: must start with http if provided ──
     if (imageUrl && typeof imageUrl === 'string' && !imageUrl.startsWith('http')) {
       return res.status(400).json({
         success: false,
@@ -141,8 +137,7 @@ export const createProduct = async (req, res) => {
   }
 };
 
-// ─── PUT /api/products/:id ────────────────────────────────────────────────────
-// Private | Update product (only owner can update)
+// Update product
 export const updateProduct = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -172,7 +167,6 @@ export const updateProduct = async (req, res) => {
 
     const { name, price, description, imageUrl } = req.body;
 
-    // ── imageUrl validation: must start with http if provided ──
     if (imageUrl && typeof imageUrl === 'string' && !imageUrl.startsWith('http')) {
       return res.status(400).json({
         success: false,
@@ -207,8 +201,7 @@ export const updateProduct = async (req, res) => {
   }
 };
 
-// ─── DELETE /api/products/:id ─────────────────────────────────────────────────
-// Private | Delete product (only owner can delete)
+// Delete product 
 export const deleteProduct = async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
