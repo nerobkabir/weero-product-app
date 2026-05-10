@@ -25,7 +25,6 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// ✅ async function — no need to call next() manually (Mongoose 6+)
 userSchema.pre('save', async function () {
   if (!this.isModified('password')) return;
 
