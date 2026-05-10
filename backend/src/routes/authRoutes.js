@@ -30,7 +30,7 @@ const loginValidation = [
     .notEmpty().withMessage('Password is required'),
 ];
 
-// ─── Routes ───────────────────────────────────────────────────────────────────
+// Routes
 router.post('/register', registerValidation, register);
 router.post('/login', loginValidation, login);
 router.get('/me', protect, getMe);
