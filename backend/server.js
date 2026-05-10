@@ -11,12 +11,11 @@ import { errorHandler, notFound } from './src/middleware/errorMiddleware.js';
 // Load environment variables
 dotenv.config();
 
-// Connect to MongoDB
 connectDB();
 
 const app = express();
 
-// ─── Security & Utility Middleware ───────────────────────────────────────────
+// Security & Middleware 
 app.use(helmet());
 app.use(cors({
   origin: [
@@ -27,16 +26,14 @@ app.use(cors({
   credentials: true,
 }));
 
-// HTTP request logger (only in development)
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
-// Parse incoming JSON requests
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// ─── Routes ──────────────────────────────────────────────────────────────────
+// Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
 
@@ -45,11 +42,11 @@ app.get('/', (req, res) => {
   res.json({ message: 'Weero Product API is running...' });
 });
 
-// ─── Error Handling Middleware ────────────────────────────────────────────────
+// Error Handling Middleware
 app.use(notFound);
 app.use(errorHandler);
 
-// ─── Start Server ─────────────────────────────────────────────────────────────
+// Start Server
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
