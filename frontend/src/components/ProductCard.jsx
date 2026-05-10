@@ -1,23 +1,23 @@
 import { useState } from 'react';
-import { FiEdit2, FiTrash2, FiUser, FiAlertTriangle } from 'react-icons/fi';
+import { FiEdit2, FiTrash2, FiUser, FiAlertTriangle, FiDollarSign } from 'react-icons/fi';
 import useAuth from '../hooks/useAuth';
 
 const FALLBACK_IMG = 'https://placehold.co/400x300/e2e8f0/94a3b8?text=No+Image';
 
-// ── Confirm Delete Modal ──────────────────────────────────────────────────────
+// ── Delete Modal ──────────────────────────────────────────────────────────────
 const DeleteModal = ({ productName, onConfirm, onCancel, loading }) => (
-  <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fade-in">
+  <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
     <div className="card p-6 w-full max-w-sm animate-scale-in">
       <div className="flex items-center gap-3 mb-4">
-        <div className="w-10 h-10 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center">
+        <div className="w-10 h-10 bg-red-500/10 rounded-xl flex items-center justify-center">
           <FiAlertTriangle className="text-red-500" size={18} />
         </div>
         <div>
           <h3 className="font-semibold text-slate-900 dark:text-white">Delete Product</h3>
-          <p className="text-xs text-slate-500 dark:text-slate-400">This action cannot be undone</p>
+          <p className="text-xs text-slate-400 dark:text-[#666]">This cannot be undone</p>
         </div>
       </div>
-      <p className="text-sm text-slate-600 dark:text-slate-400 mb-5">
+      <p className="text-sm text-slate-500 dark:text-[#888] mb-5 leading-relaxed">
         Are you sure you want to delete{' '}
         <span className="font-semibold text-slate-900 dark:text-white">"{productName}"</span>?
       </p>
@@ -53,8 +53,8 @@ const ProductCard = ({ product, onEdit, onDelete, deleteLoading }) => {
   }).format(product.price);
 
   const shortDesc =
-    product.description?.length > 90
-      ? product.description.slice(0, 90) + '...'
+    product.description?.length > 85
+      ? product.description.slice(0, 85) + '...'
       : product.description;
 
   const handleDelete = async () => {
@@ -64,58 +64,90 @@ const ProductCard = ({ product, onEdit, onDelete, deleteLoading }) => {
 
   return (
     <>
-      <div className="card group flex flex-col overflow-hidden hover:shadow-xl hover:shadow-slate-200/60 dark:hover:shadow-slate-900/60 hover:-translate-y-1 transition-all duration-300">
+      <div className="group flex flex-col overflow-hidden rounded-2xl bg-white dark:bg-[#0f0f0f] border border-slate-200/80 dark:border-[#1e1e1e] hover:border-brand-300 dark:hover:border-brand-500/30 hover:shadow-xl hover:shadow-brand-500/8 dark:hover:shadow-brand-500/5 hover:-translate-y-1.5 transition-all duration-300">
 
         {/* ── Image ── */}
-        <div className="relative overflow-hidden bg-slate-100 dark:bg-slate-800 h-48">
+        <div className="relative overflow-hidden bg-slate-100 dark:bg-[#1a1a1a] h-48">
           <img
             src={imgError ? FALLBACK_IMG : (product.imageUrl || FALLBACK_IMG)}
             alt={product.name}
             onError={() => setImgError(true)}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500"
+            style={{ '--tw-scale-x': 'group-hover:1.08', '--tw-scale-y': 'group-hover:1.08' }}
           />
+
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
           {/* Price badge */}
-          <div className="absolute top-3 right-3">
-            <span className="badge bg-brand-500 text-white shadow-lg shadow-brand-500/30 text-xs font-bold px-3 py-1 rounded-full">
-              {formattedPrice}
-            </span>
+          <div className="absolute top-3 left-3">
+            <div className="flex items-center gap-1 bg-white/95 dark:bg-black/80 backdrop-blur-sm text-slate-800 dark:text-white text-xs font-bold px-2.5 py-1.5 rounded-lg shadow-lg border border-white/50 dark:border-white/10">
+              <FiDollarSign size={11} className="text-brand-500" />
+              {formattedPrice.replace('$', '')}
+            </div>
           </div>
+
+          {/* Owner badge */}
+          {isOwner && (
+            <div className="absolute top-3 right-3">
+              <span className="text-[10px] font-semibold bg-brand-500 text-white px-2 py-1 rounded-full">
+                Mine
+              </span>
+            </div>
+          )}
         </div>
 
         {/* ── Content ── */}
-        <div className="flex flex-col flex-1 p-4 gap-3">
-          <div>
-            <h3 className="font-semibold text-slate-900 dark:text-white text-base leading-tight line-clamp-1">
-              {product.name}
-            </h3>
-            <p className="text-sm text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
-              {shortDesc}
-            </p>
-          </div>
+        <div className="flex flex-col flex-1 p-4">
+
+          {/* Title */}
+          <h3 className="font-semibold text-slate-900 dark:text-white text-sm leading-snug line-clamp-1 mb-1.5">
+            {product.name}
+          </h3>
+
+          {/* Description */}
+          <p className="text-xs text-slate-400 dark:text-[#666] leading-relaxed flex-1">
+            {shortDesc}
+          </p>
 
           {/* Owner info */}
           {product.createdBy?.name && (
-            <div className="flex items-center gap-1.5 text-xs text-slate-400 dark:text-slate-500">
-              <FiUser size={11} />
-              <span>{product.createdBy.name}</span>
+            <div className="flex items-center gap-1.5 mt-3 pt-3 border-t border-slate-100 dark:border-[#1a1a1a]">
+              <div className="w-5 h-5 bg-brand-500/10 dark:bg-brand-500/20 rounded-full flex items-center justify-center">
+                <FiUser size={10} className="text-brand-500" />
+              </div>
+              <span className="text-[11px] text-slate-400 dark:text-[#666]">
+                {product.createdBy.name}
+              </span>
             </div>
           )}
 
-          {/* ── Actions (owner only) ── */}
+          {/* ── Owner Actions ── */}
           {isOwner && (
-            <div className="flex gap-2 mt-auto pt-3 border-t border-slate-100 dark:border-slate-800">
+            <div className="flex gap-2 mt-3">
+              {/* Edit button */}
               <button
                 onClick={() => onEdit(product)}
-                className="btn-secondary flex-1 justify-center !py-2 !text-xs"
+                className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl text-xs font-semibold
+                           bg-slate-50 hover:bg-brand-50 dark:bg-[#1a1a1a] dark:hover:bg-brand-500/10
+                           text-slate-600 hover:text-brand-600 dark:text-[#888] dark:hover:text-brand-400
+                           border border-slate-200 hover:border-brand-300 dark:border-[#2a2a2a] dark:hover:border-brand-500/30
+                           transition-all duration-200"
               >
-                <FiEdit2 size={13} />
+                <FiEdit2 size={12} />
                 Edit
               </button>
+
+              {/* Delete button */}
               <button
                 onClick={() => setShowDeleteModal(true)}
-                className="btn-danger flex-1 justify-center !py-2 !text-xs"
+                className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl text-xs font-semibold
+                           bg-slate-50 hover:bg-red-50 dark:bg-[#1a1a1a] dark:hover:bg-red-500/10
+                           text-slate-600 hover:text-red-600 dark:text-[#888] dark:hover:text-red-400
+                           border border-slate-200 hover:border-red-300 dark:border-[#2a2a2a] dark:hover:border-red-500/30
+                           transition-all duration-200"
               >
-                <FiTrash2 size={13} />
+                <FiTrash2 size={12} />
                 Delete
               </button>
             </div>
@@ -123,7 +155,6 @@ const ProductCard = ({ product, onEdit, onDelete, deleteLoading }) => {
         </div>
       </div>
 
-      {/* Delete Confirmation Modal */}
       {showDeleteModal && (
         <DeleteModal
           productName={product.name}
