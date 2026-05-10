@@ -8,7 +8,6 @@ import productRoutes from './src/routes/productRoutes.js';
 import authRoutes from './src/routes/authRoutes.js';
 import { errorHandler, notFound } from './src/middleware/errorMiddleware.js';
 
-// Load environment variables
 dotenv.config();
 
 connectDB();
@@ -37,7 +36,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
 
-// Health check route
 app.get('/', (req, res) => {
   res.json({ message: 'Weero Product API is running...' });
 });
