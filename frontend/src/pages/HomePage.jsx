@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { FiBox, FiShield, FiSearch, FiArrowRight, FiPackage } from 'react-icons/fi';
+import { FiBox, FiShield, FiSearch, FiArrowRight, FiPackage, FiZap, FiLayers, FiEdit2 } from 'react-icons/fi';
 import Navbar from '../components/Navbar';
 import useAuth from '../hooks/useAuth';
 
