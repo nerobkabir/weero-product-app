@@ -11,10 +11,9 @@ const generateToken = (userId) => {
   );
 };
 
-// ─── POST /api/auth/register ──────────────────────────────────────────────────
-// Public | Register a new user
+
+// Register a new user
 export const register = async (req, res) => {
-  // Check validation errors
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({
@@ -36,7 +35,7 @@ export const register = async (req, res) => {
       });
     }
 
-    // Create new user (password hashing handled by pre-save hook)
+    // Create new user 
     const user = await User.create({ name, email, password });
 
     const token = generateToken(user._id);
@@ -60,10 +59,8 @@ export const register = async (req, res) => {
   }
 };
 
-// ─── POST /api/auth/login ─────────────────────────────────────────────────────
-// Public | Login user and return token
+// Login user and return token
 export const login = async (req, res) => {
-  // Check validation errors
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({
@@ -76,7 +73,6 @@ export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Find user and explicitly include password field
     const user = await User.findOne({ email }).select('+password');
     if (!user) {
       return res.status(401).json({
@@ -85,7 +81,7 @@ export const login = async (req, res) => {
       });
     }
 
-    // Compare entered password with hashed password
+    // Compare password with hashed password
     const isPasswordMatch = await user.comparePassword(password);
     if (!isPasswordMatch) {
       return res.status(401).json({
@@ -115,8 +111,7 @@ export const login = async (req, res) => {
   }
 };
 
-// ─── GET /api/auth/me ─────────────────────────────────────────────────────────
-// Private | Get currently logged-in user
+// Get currently logged-in user
 export const getMe = async (req, res) => {
   try {
     const user = await User.findById(req.user._id);
