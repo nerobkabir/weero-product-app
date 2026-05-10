@@ -22,12 +22,12 @@ module.exports = {
           900: '#312e81',
         },
         dark: {
-          bg:      '#000000', // pure black page background
-          surface: '#0f0f0f', // cards
-          elevated:'#161616', // navbar, modals
-          border:  '#222222', // borders
-          input:   '#1a1a1a', // inputs
-          muted:   '#2a2a2a', // hover states
+          bg:      '#000000', 
+          surface: '#0f0f0f', 
+          elevated:'#161616', 
+          border:  '#222222', 
+          input:   '#1a1a1a', 
+          muted:   '#2a2a2a',
         },
       },
       animation: {
