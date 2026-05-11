@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import { validationResult } from 'express-validator';
 import User from '../models/User.js';
 
-// Helper function to generate JWT token
+// Helper function
 const generateToken = (userId) => {
   return jwt.sign(
     { id: userId },

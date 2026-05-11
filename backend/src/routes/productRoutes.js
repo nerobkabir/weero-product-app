@@ -11,7 +11,7 @@ import { protect } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
-// Reusable validation rules for create and update
+// Reusable validation rules 
 const productValidation = [
   body('name')
     .notEmpty().withMessage('Product name is required')

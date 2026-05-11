@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
 
-// Protect routes — verify JWT token
+// Protect routes 
 export const protect = async (req, res, next) => {
   try {
     let token;
