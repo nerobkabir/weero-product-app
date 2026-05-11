@@ -7,7 +7,6 @@ const api = axios.create({
   },
 });
 
-// ── Request interceptor: attach JWT token ─────────────────────────────────────
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('weero-token');
@@ -19,7 +18,6 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// ── Response interceptor: handle 401 ─────────────────────────────────────────
 api.interceptors.response.use(
   (response) => response,
   (error) => {
@@ -32,14 +30,12 @@ api.interceptors.response.use(
   }
 );
 
-// ── Auth endpoints ────────────────────────────────────────────────────────────
 export const authAPI = {
   register: (data) => api.post('/auth/register', data),
   login: (data) => api.post('/auth/login', data),
   getMe: () => api.get('/auth/me'),
 };
 
-// ── Product endpoints ─────────────────────────────────────────────────────────
 export const productAPI = {
   getAll: (params) => api.get('/products', { params }),
   getById: (id) => api.get(`/products/${id}`),
