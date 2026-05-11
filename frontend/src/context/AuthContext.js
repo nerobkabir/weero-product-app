@@ -3,7 +3,6 @@ import { authAPI } from '../utils/api';
 
 export const AuthContext = createContext(null);
 
-// ── Action types ──────────────────────────────────────────────────────────────
 const AUTH_ACTIONS = {
   SET_LOADING: 'SET_LOADING',
   LOGIN_SUCCESS: 'LOGIN_SUCCESS',
@@ -11,7 +10,6 @@ const AUTH_ACTIONS = {
   AUTH_ERROR: 'AUTH_ERROR',
 };
 
-// ── Initial state ─────────────────────────────────────────────────────────────
 const initialState = {
   user: JSON.parse(localStorage.getItem('weero-user')) || null,
   token: localStorage.getItem('weero-token') || null,
@@ -20,7 +18,6 @@ const initialState = {
   error: null,
 };
 
-// ── Reducer ───────────────────────────────────────────────────────────────────
 const authReducer = (state, action) => {
   switch (action.type) {
     case AUTH_ACTIONS.SET_LOADING:
@@ -61,7 +58,6 @@ const authReducer = (state, action) => {
   }
 };
 
-// ── Helper: persist to localStorage ──────────────────────────────────────────
 const persistAuth = (token, user) => {
   localStorage.setItem('weero-token', token);
   localStorage.setItem('weero-user', JSON.stringify(user));
@@ -72,11 +68,9 @@ const clearAuth = () => {
   localStorage.removeItem('weero-user');
 };
 
-// ── Provider ──────────────────────────────────────────────────────────────────
 export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
-  // Load user on mount if token exists
   useEffect(() => {
     const loadUser = async () => {
       const token = localStorage.getItem('weero-token');
@@ -99,7 +93,6 @@ export const AuthProvider = ({ children }) => {
     loadUser();
   }, []);
 
-  // ── Register ────────────────────────────────────────────────────────────────
   const register = useCallback(async (name, email, password) => {
     dispatch({ type: AUTH_ACTIONS.SET_LOADING, payload: true });
     try {
@@ -116,7 +109,6 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
-  // ── Login ───────────────────────────────────────────────────────────────────
   const login = useCallback(async (email, password) => {
     dispatch({ type: AUTH_ACTIONS.SET_LOADING, payload: true });
     try {
@@ -133,7 +125,6 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
-  // ── Logout ──────────────────────────────────────────────────────────────────
   const logout = useCallback(() => {
     clearAuth();
     dispatch({ type: AUTH_ACTIONS.LOGOUT });
