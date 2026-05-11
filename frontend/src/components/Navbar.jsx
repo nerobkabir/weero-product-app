@@ -38,7 +38,6 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
 
-          {/* ── Logo ── */}
           <Link to="/" className="flex items-center gap-2.5 group">
             <div className="w-8 h-8 bg-brand-500 rounded-lg flex items-center justify-center shadow-lg shadow-brand-500/30 group-hover:shadow-brand-500/50 transition-shadow">
               <FiBox className="text-white" size={16} />
@@ -48,15 +47,12 @@ const Navbar = () => {
             </span>
           </Link>
 
-          {/* ── Desktop Nav ── */}
           <div className="hidden md:flex items-center gap-1">
             {navLink('/', 'Home')}
             {isAuthenticated && navLink('/products', 'Products')}
           </div>
 
-          {/* ── Desktop Actions ── */}
           <div className="hidden md:flex items-center gap-2">
-            {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
               className="p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
@@ -88,7 +84,7 @@ const Navbar = () => {
             )}
           </div>
 
-          {/* ── Mobile: theme + hamburger ── */}
+          {/* Mobile */}
           <div className="md:hidden flex items-center gap-2">
             <button
               onClick={toggleTheme}
@@ -106,7 +102,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* ── Mobile Menu ── */}
+      {/* Mobile Menu */}
       {menuOpen && (
         <div className="md:hidden border-t border-slate-200 dark:border-white/[0.06] bg-white dark:bg-[#0a0a0a] animate-slide-up">
           <div className="px-4 py-4 flex flex-col gap-2">
