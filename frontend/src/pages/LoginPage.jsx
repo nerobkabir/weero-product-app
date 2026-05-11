@@ -41,16 +41,13 @@ const LoginPage = () => {
   return (
     <div className="min-h-screen flex bg-slate-50 dark:bg-slate-950">
 
-      {/* ── Left Panel (decorative) ── */}
       <div className="hidden lg:flex lg:w-1/2 bg-brand-600 dark:bg-brand-700 relative overflow-hidden flex-col justify-between p-12">
-        {/* Background shapes */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-24 -left-24 w-96 h-96 bg-brand-500/30 rounded-full blur-3xl" />
           <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-brand-800/40 rounded-full blur-3xl" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white/5 rounded-full blur-2xl" />
         </div>
 
-        {/* Logo */}
         <div className="relative flex items-center gap-3">
           <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm">
             <FiBox className="text-white" size={20} />
@@ -58,7 +55,6 @@ const LoginPage = () => {
           <span className="text-white font-bold text-xl tracking-tight">WeeroHub</span>
         </div>
 
-        {/* Center content */}
         <div className="relative">
           <h1 className="text-4xl font-bold text-white leading-tight mb-4">
             Manage your products<br />
@@ -68,7 +64,6 @@ const LoginPage = () => {
             Add, update, search, and delete products — all in one beautiful dashboard.
           </p>
 
-          {/* Feature chips */}
           <div className="flex flex-wrap gap-2 mt-8">
             {['JWT Auth', 'Search & Filter', 'Pagination', 'CRUD API'].map((f) => (
               <span
@@ -81,17 +76,14 @@ const LoginPage = () => {
           </div>
         </div>
 
-        {/* Footer */}
         <p className="relative text-brand-300 text-sm">
           © 2026 Weero Digital. All rights reserved.
         </p>
       </div>
 
-      {/* ── Right Panel (form) ── */}
       <div className="flex-1 flex items-center justify-center p-6">
         <div className="w-full max-w-sm animate-slide-up">
 
-          {/* Mobile logo */}
           <div className="lg:hidden flex items-center gap-2 mb-8">
             <div className="w-8 h-8 bg-brand-500 rounded-lg flex items-center justify-center">
               <FiBox className="text-white" size={16} />
@@ -109,7 +101,6 @@ const LoginPage = () => {
           </div>
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-            {/* Email */}
             <div>
               <label className="input-label">Email address</label>
               <div className="relative">
@@ -127,7 +118,6 @@ const LoginPage = () => {
               {errors.email && <p className="mt-1 text-xs text-red-500">⚠ {errors.email}</p>}
             </div>
 
-            {/* Password */}
             <div>
               <label className="input-label">Password</label>
               <div className="relative">
@@ -152,7 +142,6 @@ const LoginPage = () => {
               {errors.password && <p className="mt-1 text-xs text-red-500">⚠ {errors.password}</p>}
             </div>
 
-            {/* Submit */}
             <button
               type="submit"
               disabled={loading}
