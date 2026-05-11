@@ -97,7 +97,6 @@ const RegisterPage = () => {
   return (
     <div className="min-h-screen grid lg:grid-cols-2 bg-white dark:bg-[#0a0a0a]">
 
-      {/* Left Panel */}
       <div className="flex items-center justify-center p-8 lg:p-16 order-2 lg:order-1">
         <div className="w-full max-w-sm">
 
@@ -209,7 +208,6 @@ const RegisterPage = () => {
         </div>
       </div>
 
-      {/* Right Panel */}
       <div className="hidden lg:flex bg-slate-50 dark:bg-[#111] border-l border-slate-100 dark:border-[#1e1e1e] items-center justify-center p-12 relative overflow-hidden order-1 lg:order-2">
 
         <div className="absolute top-0 right-0 w-72 h-72 bg-violet-500/5 rounded-full blur-3xl" />
