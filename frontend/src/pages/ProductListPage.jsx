@@ -31,7 +31,7 @@ const ProductListPage = () => {
 
   useEffect(() => {
     fetchProducts(queryParams);
-  }, [queryParams]);
+  }, [queryParams, fetchProducts]); 
 
   const handleSearch = useCallback((filters) => {
     setQueryParams((prev) => ({ ...prev, ...filters, page: 1 }));
