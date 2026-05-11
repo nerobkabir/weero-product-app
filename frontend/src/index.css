@@ -31,7 +31,7 @@
 }
 
 @layer components {
-  /* ── Buttons ── */
+  /* Buttons */
   .btn-primary {
     @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-xl
            bg-brand-500 hover:bg-brand-600 active:bg-brand-700
@@ -70,7 +70,7 @@
            disabled:opacity-50 disabled:cursor-not-allowed;
   }
 
-  /* ── Inputs ── */
+  /* Inputs */
   .input-field {
     @apply w-full px-4 py-2.5 rounded-xl text-sm
            bg-white border border-slate-200
@@ -102,7 +102,7 @@
     color: #aaa;
   }
 
-  /* ── Cards ── */
+  /* Cards */
   .card {
     @apply bg-white border border-slate-200/80 rounded-2xl shadow-sm;
   }
@@ -113,7 +113,7 @@
     box-shadow: 0 1px 3px rgba(0,0,0,0.5);
   }
 
-  /* ── Badge ── */
+  /* Badge */
   .badge {
     @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold;
   }

@@ -12,7 +12,6 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import ProductListPage from './pages/ProductListPage';
 
-// ToastContainer wrapper to access theme context
 const ThemedToast = () => {
   const { theme } = useTheme();
   return (
@@ -44,7 +43,6 @@ const AppRoutes = () => {
           <Route path="/products" element={<ProductListPage />} />
         </Route>
 
-        {/* Catch-all */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
 
