@@ -9,19 +9,6 @@ A full-stack web application where users can add, view, update, and delete produ
 
 ---
 
-## Screenshots
-
-### Home Page
-![Home](screenshots/home.png)
-
-### Products Page
-![Products](screenshots/products.png)
-
-### Dark Mode
-![Dark Mode](screenshots/dark-mode.png)
-
----
-
 ## Features
 
 **Core**
@@ -40,6 +27,19 @@ A full-stack web application where users can add, view, update, and delete produ
 - Image URL with live preview
 - Dark and light mode
 - Docker support
+
+---
+
+## Screenshots
+
+### Home Page
+![Home](screenshots/home.png)
+
+### Products Page
+![Products](screenshots/products.png)
+
+### Dark Mode
+![Dark Mode](screenshots/dark-mode.png)
 
 ---
 
