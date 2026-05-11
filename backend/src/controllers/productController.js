@@ -1,7 +1,7 @@
 import { validationResult } from 'express-validator';
 import Product from '../models/Product.js';
 
-// Get all products with search, filter, and pagination
+// Get all products 
 export const getAllProducts = async (req, res) => {
   try {
     const {
