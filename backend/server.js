@@ -14,7 +14,7 @@ connectDB();
 
 const app = express();
 
-// Security & Middleware 
+// Security and Middleware 
 app.use(helmet());
 app.use(cors({
   origin: [
