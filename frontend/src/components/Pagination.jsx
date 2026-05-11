@@ -7,7 +7,6 @@ const Pagination = ({ pagination, onPageChange }) => {
   const startItem = (currentPage - 1) * limit + 1;
   const endItem = Math.min(currentPage * limit, totalCount);
 
-  // Generate page numbers (show up to 5, with current page centered)
   const getPageNumbers = () => {
     const delta = 2;
     const pages = [];
@@ -49,7 +48,6 @@ const Pagination = ({ pagination, onPageChange }) => {
   return (
     <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4">
 
-      {/* ── Result count ── */}
       <p className="text-sm text-slate-500 dark:text-slate-400">
         Showing{' '}
         <span className="font-semibold text-slate-700 dark:text-slate-300">
@@ -60,9 +58,7 @@ const Pagination = ({ pagination, onPageChange }) => {
         products
       </p>
 
-      {/* ── Page controls ── */}
       <div className="flex items-center gap-1">
-        {/* Prev */}
         <button
           onClick={() => onPageChange(currentPage - 1)}
           disabled={!pagination.hasPrevPage}
@@ -76,7 +72,6 @@ const Pagination = ({ pagination, onPageChange }) => {
           <span className="hidden sm:inline">Prev</span>
         </button>
 
-        {/* Page numbers */}
         <div className="flex items-center gap-1">
           {pageNumbers.map((page, i) =>
             page === '...'
@@ -85,7 +80,6 @@ const Pagination = ({ pagination, onPageChange }) => {
           )}
         </div>
 
-        {/* Next */}
         <button
           onClick={() => onPageChange(currentPage + 1)}
           disabled={!pagination.hasNextPage}
