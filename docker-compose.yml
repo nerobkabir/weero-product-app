@@ -6,7 +6,7 @@ networks:
 
 services:
 
-  # ── Backend ─────────────────────────────────────────────────
+  # Backend 
   backend:
     build:
       context: ./backend
@@ -19,7 +19,7 @@ services:
     networks:
       - app-network
 
-  # ── Frontend ─────────────────────────────────────────────────
+  # Frontend 
   frontend:
     build:
       context: ./frontend
