@@ -7,7 +7,7 @@ const SearchBar = ({ onSearch }) => {
   const [maxPrice, setMaxPrice] = useState('');
   const debounceRef = useRef(null);
 
-  // ── Debounced search trigger ────────────────────────────────────────────────
+  // Debounced search trigger
   const triggerSearch = useCallback(
     (searchVal, minVal, maxVal) => {
       clearTimeout(debounceRef.current);
@@ -53,7 +53,6 @@ const SearchBar = ({ onSearch }) => {
     <div className="card p-4">
       <div className="flex flex-col sm:flex-row gap-3">
 
-        {/* ── Search input ── */}
         <div className="relative flex-1">
           <FiSearch
             size={16}
@@ -68,7 +67,6 @@ const SearchBar = ({ onSearch }) => {
           />
         </div>
 
-        {/* ── Price filters ── */}
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-1.5 text-slate-400 dark:text-slate-500">
             <FiSliders size={14} />
@@ -92,7 +90,6 @@ const SearchBar = ({ onSearch }) => {
           />
         </div>
 
-        {/* ── Clear button ── */}
         {hasFilters && (
           <button
             onClick={handleClear}
@@ -105,7 +102,6 @@ const SearchBar = ({ onSearch }) => {
         )}
       </div>
 
-      {/* ── Active filter tags ── */}
       {hasFilters && (
         <div className="flex flex-wrap gap-2 mt-3 pt-3 border-t border-slate-100 dark:border-slate-800">
           {search && (
