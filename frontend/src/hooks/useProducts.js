@@ -8,7 +8,7 @@ const useProducts = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // ── Fetch all products (with search/filter/pagination) ────────────────────
+  // Fetch all products
   const fetchProducts = useCallback(async (params = {}) => {
     setLoading(true);
     setError(null);
@@ -25,13 +25,13 @@ const useProducts = () => {
     }
   }, []);
 
-  // ── Create product ────────────────────────────────────────────────────────
+  // Create product
   const createProduct = useCallback(async (data) => {
     setLoading(true);
     try {
       const res = await productAPI.create(data);
       setProducts((prev) => [res.data.data, ...prev]);
-      toast.success('Product created successfully! 🎉');
+      toast.success('Product created successfully!');
       return { success: true, data: res.data.data };
     } catch (err) {
       const message = err.response?.data?.message || 'Failed to create product';
@@ -42,7 +42,7 @@ const useProducts = () => {
     }
   }, []);
 
-  // ── Update product ────────────────────────────────────────────────────────
+  // Update product 
   const updateProduct = useCallback(async (id, data) => {
     setLoading(true);
     try {
@@ -50,7 +50,7 @@ const useProducts = () => {
       setProducts((prev) =>
         prev.map((p) => (p._id === id ? res.data.data : p))
       );
-      toast.success('Product updated successfully! ✅');
+      toast.success('Product updated successfully!');
       return { success: true, data: res.data.data };
     } catch (err) {
       const message = err.response?.data?.message || 'Failed to update product';
@@ -61,13 +61,13 @@ const useProducts = () => {
     }
   }, []);
 
-  // ── Delete product ────────────────────────────────────────────────────────
+  // Delete product
   const deleteProduct = useCallback(async (id) => {
     setLoading(true);
     try {
       await productAPI.delete(id);
       setProducts((prev) => prev.filter((p) => p._id !== id));
-      toast.success('Product deleted successfully! 🗑️');
+      toast.success('Product deleted successfully!');
       return { success: true };
     } catch (err) {
       const message = err.response?.data?.message || 'Failed to delete product';
