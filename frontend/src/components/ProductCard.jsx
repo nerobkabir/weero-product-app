@@ -4,7 +4,7 @@ import useAuth from '../hooks/useAuth';
 
 const FALLBACK_IMG = 'https://placehold.co/400x300/e2e8f0/94a3b8?text=No+Image';
 
-// ── Delete Modal ──────────────────────────────────────────────────────────────
+// Delete Modal
 const DeleteModal = ({ productName, onConfirm, onCancel, loading }) => (
   <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
     <div className="card p-6 w-full max-w-sm animate-scale-in">
@@ -38,7 +38,7 @@ const DeleteModal = ({ productName, onConfirm, onCancel, loading }) => (
   </div>
 );
 
-// ── ProductCard ───────────────────────────────────────────────────────────────
+// ProductCard 
 const ProductCard = ({ product, onEdit, onDelete, deleteLoading }) => {
   const { user, isAuthenticated } = useAuth();
   const [imgError, setImgError] = useState(false);
@@ -66,7 +66,6 @@ const ProductCard = ({ product, onEdit, onDelete, deleteLoading }) => {
     <>
       <div className="group flex flex-col overflow-hidden rounded-2xl bg-white dark:bg-[#0f0f0f] border border-slate-200/80 dark:border-[#1e1e1e] hover:border-brand-300 dark:hover:border-brand-500/30 hover:shadow-xl hover:shadow-brand-500/8 dark:hover:shadow-brand-500/5 hover:-translate-y-1.5 transition-all duration-300">
 
-        {/* ── Image ── */}
         <div className="relative overflow-hidden bg-slate-100 dark:bg-[#1a1a1a] h-48">
           <img
             src={imgError ? FALLBACK_IMG : (product.imageUrl || FALLBACK_IMG)}
@@ -76,10 +75,8 @@ const ProductCard = ({ product, onEdit, onDelete, deleteLoading }) => {
             style={{ '--tw-scale-x': 'group-hover:1.08', '--tw-scale-y': 'group-hover:1.08' }}
           />
 
-          {/* Gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-          {/* Price badge */}
           <div className="absolute top-3 left-3">
             <div className="flex items-center gap-1 bg-white/95 dark:bg-black/80 backdrop-blur-sm text-slate-800 dark:text-white text-xs font-bold px-2.5 py-1.5 rounded-lg shadow-lg border border-white/50 dark:border-white/10">
               <FiDollarSign size={11} className="text-brand-500" />
@@ -87,7 +84,6 @@ const ProductCard = ({ product, onEdit, onDelete, deleteLoading }) => {
             </div>
           </div>
 
-          {/* Owner badge */}
           {isOwner && (
             <div className="absolute top-3 right-3">
               <span className="text-[10px] font-semibold bg-brand-500 text-white px-2 py-1 rounded-full">
@@ -97,20 +93,16 @@ const ProductCard = ({ product, onEdit, onDelete, deleteLoading }) => {
           )}
         </div>
 
-        {/* ── Content ── */}
         <div className="flex flex-col flex-1 p-4">
 
-          {/* Title */}
           <h3 className="font-semibold text-slate-900 dark:text-white text-sm leading-snug line-clamp-1 mb-1.5">
             {product.name}
           </h3>
 
-          {/* Description */}
           <p className="text-xs text-slate-400 dark:text-[#666] leading-relaxed flex-1">
             {shortDesc}
           </p>
 
-          {/* Owner info */}
           {product.createdBy?.name && (
             <div className="flex items-center gap-1.5 mt-3 pt-3 border-t border-slate-100 dark:border-[#1a1a1a]">
               <div className="w-5 h-5 bg-brand-500/10 dark:bg-brand-500/20 rounded-full flex items-center justify-center">
@@ -122,10 +114,8 @@ const ProductCard = ({ product, onEdit, onDelete, deleteLoading }) => {
             </div>
           )}
 
-          {/* ── Owner Actions ── */}
           {isOwner && (
             <div className="flex gap-2 mt-3">
-              {/* Edit button */}
               <button
                 onClick={() => onEdit(product)}
                 className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl text-xs font-semibold
@@ -138,7 +128,6 @@ const ProductCard = ({ product, onEdit, onDelete, deleteLoading }) => {
                 Edit
               </button>
 
-              {/* Delete button */}
               <button
                 onClick={() => setShowDeleteModal(true)}
                 className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl text-xs font-semibold

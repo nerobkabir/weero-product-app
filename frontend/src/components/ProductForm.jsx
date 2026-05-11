@@ -4,7 +4,6 @@ import { FiX, FiPackage, FiDollarSign, FiImage, FiFileText, FiSave } from 'react
 const INITIAL_FORM = { name: '', price: '', imageUrl: '', description: '' };
 const INITIAL_ERRORS = { name: '', price: '', imageUrl: '', description: '' };
 
-// ✅ Field component OUTSIDE ProductForm — fixes one-character-at-a-time bug
 const Field = ({ icon: Icon, label, name, type = 'text', placeholder, isTextarea, value, onChange, error }) => (
   <div>
     <label className="input-label">
@@ -88,7 +87,6 @@ const ProductForm = ({ initialData = null, onSubmit, onClose, loading }) => {
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fade-in">
       <div className="card w-full max-w-lg animate-scale-in max-h-[90vh] flex flex-col">
 
-        {/* Header */}
         <div className="flex items-center justify-between p-5 border-b border-slate-100 dark:border-[#1e1e1e]">
           <div className="flex items-center gap-2.5">
             <div className="w-8 h-8 bg-brand-500/10 dark:bg-brand-500/20 rounded-lg flex items-center justify-center">
@@ -108,14 +106,12 @@ const ProductForm = ({ initialData = null, onSubmit, onClose, loading }) => {
           </button>
         </div>
 
-        {/* Form */}
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 p-5 overflow-y-auto">
           <Field icon={FiPackage} label="Product Name" name="name" placeholder="e.g. Wireless Headphones" value={form.name} onChange={handleChange} error={errors.name} />
           <Field icon={FiDollarSign} label="Price (USD)" name="price" type="number" placeholder="e.g. 49.99" value={form.price} onChange={handleChange} error={errors.price} />
           <Field icon={FiImage} label="Image URL (optional)" name="imageUrl" placeholder="https://example.com/image.jpg" value={form.imageUrl} onChange={handleChange} error={errors.imageUrl} />
           <Field icon={FiFileText} label="Description" name="description" placeholder="Describe the product..." isTextarea value={form.description} onChange={handleChange} error={errors.description} />
 
-          {/* Image Preview */}
           <div>
             <p className="input-label flex items-center gap-1.5">
               <FiImage size={13} className="text-brand-500" /> Image Preview
@@ -137,7 +133,6 @@ const ProductForm = ({ initialData = null, onSubmit, onClose, loading }) => {
             </div>
           </div>
 
-          {/* Buttons */}
           <div className="flex gap-2 pt-1">
             <button type="button" onClick={onClose} className="btn-secondary flex-1 justify-center" disabled={loading}>Cancel</button>
             <button type="submit" className="btn-primary flex-1 justify-center" disabled={loading}>
