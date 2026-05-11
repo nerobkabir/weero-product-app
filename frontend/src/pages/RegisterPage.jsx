@@ -4,7 +4,6 @@ import { toast } from 'react-toastify';
 import { FiUser, FiMail, FiLock, FiEye, FiEyeOff, FiBox, FiArrowRight, FiCheck } from 'react-icons/fi';
 import useAuth from '../hooks/useAuth';
 
-// ✅ InputField OUTSIDE RegisterPage — fixes one-character-at-a-time bug
 const InputField = ({ icon: Icon, label, name, type, placeholder, rightEl, autoComplete, value, onChange, error }) => (
   <div>
     <label className="input-label">{label}</label>
@@ -85,7 +84,6 @@ const RegisterPage = () => {
   return (
     <div className="min-h-screen flex bg-slate-50 dark:bg-black">
 
-      {/* Left panel */}
       <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-slate-900 to-slate-800 relative overflow-hidden flex-col justify-between p-12">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-0 right-0 w-80 h-80 bg-brand-500/10 rounded-full blur-3xl" />
@@ -117,7 +115,6 @@ const RegisterPage = () => {
         <p className="relative text-slate-600 text-sm">© 2026 ProductHub.</p>
       </div>
 
-      {/* Right form panel */}
       <div className="flex-1 flex items-center justify-center p-6 overflow-y-auto">
         <div className="w-full max-w-sm animate-slide-up py-6">
           <div className="lg:hidden flex items-center gap-2 mb-8">

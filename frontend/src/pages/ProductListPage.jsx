@@ -29,10 +29,9 @@ const ProductListPage = () => {
   const [deleteLoadingId, setDeleteLoadingId] = useState(null);
   const [queryParams, setQueryParams] = useState({ page: 1, limit: 8 });
 
-  // ── Fetch on mount and when params change ──────────────────────────────────
   useEffect(() => {
     fetchProducts(queryParams);
-  }, [queryParams]); // eslint-disable-line
+  }, [queryParams]);
 
   const handleSearch = useCallback((filters) => {
     setQueryParams((prev) => ({ ...prev, ...filters, page: 1 }));
@@ -43,19 +42,16 @@ const ProductListPage = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // ── Open edit form ─────────────────────────────────────────────────────────
   const handleEdit = (product) => {
     setEditProduct(product);
     setShowForm(true);
   };
 
-  // ── Close form ─────────────────────────────────────────────────────────────
   const handleCloseForm = () => {
     setShowForm(false);
     setEditProduct(null);
   };
 
-  // ── Submit form (create or update) ────────────────────────────────────────
   const handleFormSubmit = async (data) => {
     setFormLoading(true);
     let result;
@@ -71,7 +67,6 @@ const ProductListPage = () => {
     }
   };
 
-  // ── Delete ─────────────────────────────────────────────────────────────────
   const handleDelete = async (id) => {
     setDeleteLoadingId(id);
     const result = await deleteProduct(id);
@@ -87,7 +82,6 @@ const ProductListPage = () => {
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
-        {/* ── Page Header ── */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 animate-fade-in">
           <div>
             <h1 className="text-2xl font-bold text-slate-900 dark:text-white">
@@ -111,15 +105,12 @@ const ProductListPage = () => {
           )}
         </div>
 
-        {/* ── Search Bar ── */}
         <div className="mb-6 animate-slide-up">
           <SearchBar onSearch={handleSearch} />
         </div>
 
-        {/* ── Skeleton Loading ── */}
         {loading && <SkeletonGrid count={8} />}
 
-        {/* ── Error State ── */}
         {!loading && error && (
           <div className="card p-8 text-center animate-fade-in">
             <div className="w-14 h-14 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -139,7 +130,6 @@ const ProductListPage = () => {
           </div>
         )}
 
-        {/* ── Empty State ── */}
         {!loading && !error && products.length === 0 && (
           <div className="card p-12 text-center animate-fade-in">
             <div className="w-16 h-16 bg-brand-100 dark:bg-brand-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
@@ -165,7 +155,6 @@ const ProductListPage = () => {
           </div>
         )}
 
-        {/* ── Product Grid ── */}
         {!loading && !error && products.length > 0 && (
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 animate-fade-in">
@@ -180,7 +169,6 @@ const ProductListPage = () => {
               ))}
             </div>
 
-            {/* ── Pagination ── */}
             <div className="mt-8">
               <Pagination
                 pagination={pagination}
@@ -191,7 +179,6 @@ const ProductListPage = () => {
         )}
       </main>
 
-      {/* ── Product Form Modal ── */}
       {showForm && (
         <ProductForm
           initialData={editProduct}
