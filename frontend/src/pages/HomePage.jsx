@@ -66,9 +66,7 @@ const HomePage = () => {
     <div className="min-h-screen bg-slate-50 dark:bg-black">
       <Navbar />
 
-      {/* ── Hero Section ── */}
       <section className="relative overflow-hidden">
-        {/* Background gradient */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-brand-500/8 dark:bg-brand-500/5 rounded-full blur-3xl" />
           <div className="absolute -bottom-40 -left-40 w-[600px] h-[600px] bg-violet-500/8 dark:bg-violet-500/5 rounded-full blur-3xl" />
@@ -76,13 +74,11 @@ const HomePage = () => {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24 text-center">
 
-          {/* Badge */}
           <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-brand-100 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 rounded-full text-xs font-semibold mb-6 animate-fade-in">
             <span className="w-1.5 h-1.5 bg-brand-500 rounded-full animate-pulse" />
             Full Stack MERN Application
           </div>
 
-          {/* Heading */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white leading-tight mb-6 animate-slide-up">
             Manage products{' '}
             <span className="text-brand-600 dark:text-brand-400 relative">
@@ -97,7 +93,6 @@ const HomePage = () => {
             Add, search, update, and delete products with a polished, responsive UI.
           </p>
 
-          {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 animate-fade-in">
             <Link to="/products" className="btn-primary !px-7 !py-3 text-base shadow-xl shadow-brand-500/25">
               Browse Products
@@ -110,7 +105,6 @@ const HomePage = () => {
             )}
           </div>
 
-          {/* Stats */}
           <div className="flex items-center justify-center gap-12 mt-16 pt-12 border-t border-slate-200 dark:border-white/[0.05] animate-fade-in">
             <StatCard value="CRUD" label="Full API" />
             <StatCard value="JWT" label="Secured" />
@@ -120,7 +114,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* ── Features Section ── */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-3">
@@ -139,7 +132,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* ── How it works ── */}
       <section className="bg-white dark:bg-[#0a0a0a] border-y border-slate-200 dark:border-white/[0.05]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center mb-12">
@@ -170,7 +162,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* ── Bottom CTA ── */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="card p-10 text-center bg-gradient-to-br from-brand-500 to-brand-700 border-0 relative overflow-hidden">
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -208,7 +199,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* ── Footer ── */}
       <footer className="border-t border-slate-200 dark:border-white/[0.05] py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2">
