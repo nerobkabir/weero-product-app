@@ -7,10 +7,8 @@ import {
 import Navbar from '../components/Navbar';
 import useAuth from '../hooks/useAuth';
 
-// ── Feature Card ──────────────────────────────────────────────────────────────
 const FeatureCard = ({ icon: Icon, title, desc, color, badge }) => (
   <div className="group relative flex flex-col p-6 rounded-2xl bg-white dark:bg-[#0f0f0f] border border-slate-200/80 dark:border-[#1e1e1e] hover:border-brand-300 dark:hover:border-brand-500/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-500/8 transition-all duration-300 overflow-hidden">
-    {/* Glow on hover */}
     <div className="absolute inset-0 bg-gradient-to-br from-brand-500/3 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
 
     <div className="relative">
@@ -29,14 +27,12 @@ const FeatureCard = ({ icon: Icon, title, desc, color, badge }) => (
   </div>
 );
 
-// ── Tech Badge ────────────────────────────────────────────────────────────────
 const TechBadge = ({ label, color }) => (
   <span className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold border ${color}`}>
     {label}
   </span>
 );
 
-// ── Stat ─────────────────────────────────────────────────────────────────────
 const Stat = ({ value, label, sub }) => (
   <div className="text-center px-4">
     <div className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-0.5">{value}</div>
@@ -45,7 +41,6 @@ const Stat = ({ value, label, sub }) => (
   </div>
 );
 
-// ── HomePage ──────────────────────────────────────────────────────────────────
 const HomePage = () => {
   const { isAuthenticated } = useAuth();
 
@@ -73,11 +68,7 @@ const HomePage = () => {
     <div className="min-h-screen bg-slate-50 dark:bg-black">
       <Navbar />
 
-      {/* ════════════════════════════════════════════════════════════
-          HERO
-      ════════════════════════════════════════════════════════════ */}
       <section className="relative overflow-hidden">
-        {/* Background blobs */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute -top-60 -right-60 w-[700px] h-[700px] bg-brand-500/6 dark:bg-brand-500/4 rounded-full blur-3xl" />
           <div className="absolute -bottom-60 -left-60 w-[700px] h-[700px] bg-violet-500/6 dark:bg-violet-500/3 rounded-full blur-3xl" />
@@ -85,14 +76,12 @@ const HomePage = () => {
 
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 text-center">
 
-          {/* Top badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-[#111] border border-slate-200 dark:border-[#222] rounded-full text-xs font-semibold text-slate-600 dark:text-slate-400 mb-8 shadow-sm animate-fade-in">
             <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
             Weero Digital — Full Stack Developer Task
             <FiStar size={11} className="text-amber-400" />
           </div>
 
-          {/* Heading */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white leading-[1.15] tracking-tight mb-6 animate-slide-up">
             A product dashboard
             <br />
@@ -106,7 +95,6 @@ const HomePage = () => {
             image support, dark mode, and Docker — all working seamlessly.
           </p>
 
-          {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-14 animate-fade-in">
             <Link
               to="/products"
@@ -122,7 +110,6 @@ const HomePage = () => {
             )}
           </div>
 
-          {/* Tech stack pills */}
           <div className="flex flex-wrap items-center justify-center gap-2 animate-fade-in">
             {techStack.map((t) => (
               <TechBadge key={t.label} {...t} />
@@ -130,7 +117,6 @@ const HomePage = () => {
           </div>
         </div>
 
-        {/* Stats bar */}
         <div className="relative max-w-4xl mx-auto px-4 pb-20">
           <div className="bg-white dark:bg-[#0f0f0f] border border-slate-200 dark:border-[#1e1e1e] rounded-2xl px-6 py-6 grid grid-cols-2 sm:grid-cols-4 gap-6 shadow-sm">
             <Stat value="CRUD" label="Full API" sub="4 endpoints" />
@@ -141,9 +127,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════════════════════
-          FEATURES
-      ════════════════════════════════════════════════════════════ */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
         <div className="text-center mb-12">
           <p className="text-xs font-semibold text-brand-500 uppercase tracking-widest mb-3">What's included</p>
@@ -160,9 +143,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════════════════════
-          HOW IT WORKS
-      ════════════════════════════════════════════════════════════ */}
       <section className="bg-white dark:bg-[#080808] border-y border-slate-200 dark:border-[#111]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center mb-14">
@@ -173,7 +153,6 @@ const HomePage = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
-            {/* Connector line */}
             <div className="hidden md:block absolute top-8 left-1/3 right-1/3 h-px bg-gradient-to-r from-transparent via-brand-300 dark:via-brand-500/30 to-transparent" />
 
             {[
@@ -198,9 +177,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════════════════════
-          EVALUATION CRITERIA
-      ════════════════════════════════════════════════════════════ */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div>
@@ -244,9 +220,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════════════════════
-          CTA BANNER
-      ════════════════════════════════════════════════════════════ */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-brand-500 via-brand-600 to-violet-600 p-10 text-center">
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -281,9 +254,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════════════════════
-          FOOTER
-      ════════════════════════════════════════════════════════════ */}
       <footer className="border-t border-slate-200 dark:border-[#111] py-8">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
